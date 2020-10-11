@@ -27,11 +27,9 @@ Here's a walkthrough of implemented user stories:
 
 <img src='https://i.imgur.com/pGnccm9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
 ## Notes
 
-Describe any challenges encountered while building the app.
+One challenge I faced while creating this app was updating the per person amount correctly. Since a seek bar's progress can go down to zero, I had to make sure I was not dividing by zero when calculating the per person amount. An easy fix was to limit the seek bar's max to 14 and then always add 1 to its value when calculating the per person amount.
 
 ## License
 
