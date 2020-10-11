@@ -24,36 +24,56 @@ class MainActivity : AppCompatActivity() {
         tvTipPercent.text = "$INITIAL_TIP_PERCENT%"
         updateTipDescription(INITIAL_TIP_PERCENT)
 
-        // Tip base listener
-        seekBarTip.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
+        // Tip bar listener
+        seekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                Log.i(TAG, "onProgressChanged $p1")
+                Log.i(TAG, "onProgressTipChanged $p1")
                 tvTipPercent.text = "$p1%"
                 updateTipDescription(p1)
                 computeTipAndTotal()
             }
+
             override fun onStartTrackingTouch(p0: SeekBar?) {}
             override fun onStopTrackingTouch(p0: SeekBar?) {}
         })
 
-        etBase.addTextChangedListener(object: TextWatcher {
+        // Text field listener
+        etBase.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
-                Log.i(TAG, "afterTextChanged $p0")
+                Log.i(TAG, "afterTextBaseChanged $p0")
                 computeTipAndTotal()
             }
+
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        })
+
+        // Split bar listener
+        seekBarSplit.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
+                Log.i(TAG, "onProgressSplitChanged $p1")
+                if (p1 > 0) {
+                    val numPeople = p1 + 1
+                    tvSplitDescription.text = "$numPeople people"
+                } else {
+                    tvSplitDescription.text = "1 person"
+                }
+                computeTipAndTotal()
+            }
+
+            override fun onStartTrackingTouch(p0: SeekBar?) {}
+            override fun onStopTrackingTouch(p0: SeekBar?) {}
         })
     }
 
     private fun updateTipDescription(tipPercent: Int) {
-        val tipDescription : String
+        val tipDescription: String
         when (tipPercent) {
-            in 0..9 -> tipDescription = "Poor"
-            in 10..14 -> tipDescription = "Acceptable"
-            in 15..19 -> tipDescription = "Good"
-            in 20..24 -> tipDescription = "Great"
-            else -> tipDescription = "Amazing"
+            in 0..9 -> tipDescription = "Poor \uD83D\uDE43️"
+            in 10..14 -> tipDescription = "Acceptable \uD83E\uDD1D"
+            in 15..19 -> tipDescription = "Good \uD83D\uDC4C"
+            in 20..24 -> tipDescription = "Great \uD83E\uDD17"
+            else -> tipDescription = "Amazing \uD83D\uDD25\uD83D\uDD25"
         }
         tvTextDescription.text = tipDescription
         val color = ArgbEvaluator().evaluate(
@@ -69,14 +89,17 @@ class MainActivity : AppCompatActivity() {
         if (etBase.text.isEmpty()) {
             tvTipAmount.text = ""
             tvTotalAmount.text = ""
+            tvPerPerson.text = ""
             return
         }
         val baseAmount = etBase.text.toString().toDouble()
         val tipPercent = seekBarTip.progress
         val tipAmount = baseAmount * tipPercent / 100
         val totalAmount = baseAmount + tipAmount
+        val perPerson = totalAmount / (seekBarSplit.progress + 1)
         tvTipAmount.text = "%.2f".format(tipAmount)
         tvTotalAmount.text = "%.2f".format(totalAmount)
+        tvPerPerson.text = "%.2f".format(perPerson)
     }
 
 

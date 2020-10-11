@@ -55,6 +55,28 @@
         app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel"
         app:layout_constraintTop_toBottomOf="@+id/tvTipLabel" />
 
+    <TextView
+        android:id="@+id/tvSplit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Split"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalLabel" />
+
+    <TextView
+        android:id="@+id/tvPerPersonLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Per\nperson"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvBaseLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplit" />
+
     <!-- Views on right side -->
 
     <EditText
@@ -109,6 +131,38 @@
         app:layout_constraintStart_toEndOf="@+id/tvTotalLabel"
         tools:text="12.44" />
 
+    <SeekBar
+        android:id="@+id/seekBarSplit"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:max="14"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSplit"
+        app:layout_constraintStart_toEndOf="@+id/tvSplit"
+        app:layout_constraintTop_toTopOf="@+id/tvSplit" />
+
+    <TextView
+        android:id="@+id/tvSplitDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="1 person"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarSplit"
+        app:layout_constraintStart_toStartOf="@+id/seekBarSplit"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarSplit" />
+
+    <TextView
+        android:id="@+id/tvPerPerson"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPerPersonLabel"
+        app:layout_constraintStart_toEndOf="@+id/tvPerPersonLabel"
+        app:layout_constraintTop_toTopOf="@+id/tvPerPersonLabel"
+        tools:text="12.44" />
+
     <!-- Footer views -->
 
     <TextView
@@ -123,8 +177,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
