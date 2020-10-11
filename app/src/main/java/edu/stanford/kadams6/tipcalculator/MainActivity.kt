@@ -1,11 +1,13 @@
 package edu.stanford.kadams6.tipcalculator
 
+import android.animation.ArgbEvaluator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 // Tag for logging
@@ -20,12 +22,14 @@ class MainActivity : AppCompatActivity() {
         // Set default tip
         seekBarTip.progress = INITIAL_TIP_PERCENT
         tvTipPercent.text = "$INITIAL_TIP_PERCENT%"
+        updateTipDescription(INITIAL_TIP_PERCENT)
 
         // Tip base listener
         seekBarTip.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 Log.i(TAG, "onProgressChanged $p1")
                 tvTipPercent.text = "$p1%"
+                updateTipDescription(p1)
                 computeTipAndTotal()
             }
             override fun onStartTrackingTouch(p0: SeekBar?) {}
@@ -40,6 +44,24 @@ class MainActivity : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
+    }
+
+    private fun updateTipDescription(tipPercent: Int) {
+        val tipDescription : String
+        when (tipPercent) {
+            in 0..9 -> tipDescription = "Poor"
+            in 10..14 -> tipDescription = "Acceptable"
+            in 15..19 -> tipDescription = "Good"
+            in 20..24 -> tipDescription = "Great"
+            else -> tipDescription = "Amazing"
+        }
+        tvTextDescription.text = tipDescription
+        val color = ArgbEvaluator().evaluate(
+            tipPercent.toFloat() / seekBarTip.max,
+            ContextCompat.getColor(this, R.color.colorWorstTip),
+            ContextCompat.getColor(this, R.color.colorBestTip)
+        ) as Int
+        tvTextDescription.setTextColor(color)
     }
 
     private fun computeTipAndTotal() {

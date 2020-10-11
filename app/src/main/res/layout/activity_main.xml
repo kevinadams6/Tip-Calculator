@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvFooter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -36,7 +37,7 @@
         android:id="@+id/tvTipLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:text="Tip"
         android:textColor="@android:color/black"
         android:textSize="18sp"
@@ -64,8 +65,8 @@
         android:ems="8"
         android:inputType="numberDecimal"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/tvBaseLabel"
-        app:layout_constraintBaseline_toBaselineOf="@id/tvBaseLabel" />
+        app:layout_constraintBaseline_toBaselineOf="@id/tvBaseLabel"
+        app:layout_constraintStart_toEndOf="@+id/tvBaseLabel" />
 
     <SeekBar
         android:id="@+id/seekBarTip"
@@ -78,13 +79,24 @@
         app:layout_constraintTop_toTopOf="@+id/tvTipPercent" />
 
     <TextView
+        android:id="@+id/tvTextDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarTip"
+        app:layout_constraintStart_toStartOf="@+id/seekBarTip"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarTip"
+        tools:text="Acceptable" />
+
+    <TextView
         android:id="@+id/tvTipAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/tvTipLabel"
         app:layout_constraintBaseline_toBaselineOf="@id/tvTipLabel"
+        app:layout_constraintStart_toEndOf="@+id/tvTipLabel"
         tools:text="3.78" />
 
     <TextView
@@ -93,9 +105,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/tvTotalLabel"
         app:layout_constraintBaseline_toBaselineOf="@id/tvTotalLabel"
+        app:layout_constraintStart_toEndOf="@+id/tvTotalLabel"
         tools:text="12.44" />
+
+    <!-- Footer views -->
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="Made with ❤️ by Kevin"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
