@@ -23,7 +23,7 @@ The following **extensions** are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of **Tippy**:
 
 <img src='https://i.imgur.com/pGnccm9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
