@@ -4,7 +4,7 @@
 
 **Tippy** computes the tip and total amount for a bill. The app uses the base amount and tip percentage to calculate the amount owed, and it also describes the quality of service based on the tip.
 
-Time spent: **X** hours spent in total
+Time spent: **5** hours spent in total
 
 ## Functionality 
 
@@ -18,13 +18,14 @@ The following **required** functionality is completed:
 The following **extensions** are implemented:
 
 * [X] Custom colors palette selected
-* [ ] List anything else that you did to improve the app functionality or design!
+* [X] Emojis in tip description
+* [X] User can select to split total amount between up to 15 people
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/pGnccm9' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
