@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 
 The following **extensions** are implemented:
 
-* [ ] Custom colors palette selected
+* [X] Custom colors palette selected
 * [ ] List anything else that you did to improve the app functionality or design!
 
 ## Video Walkthrough
