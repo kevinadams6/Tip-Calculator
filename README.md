@@ -4,7 +4,7 @@
 
 **Tippy** computes the tip and total amount for a bill. The app uses the base amount and tip percentage to calculate the amount owed, and it also describes the quality of service based on the tip.
 
-Time spent: **X** hours spent in total
+Time spent: **5** hours spent in total
 
 ## Functionality 
 
@@ -18,19 +18,18 @@ The following **required** functionality is completed:
 The following **extensions** are implemented:
 
 * [X] Custom colors palette selected
-* [ ] List anything else that you did to improve the app functionality or design!
+* [X] Emojis in tip description
+* [X] User can select to split total amount between up to 15 people
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of **Tippy**:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+<img src='https://i.imgur.com/pGnccm9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+One challenge I faced while creating this app was updating the per person amount correctly. Since a seek bar's progress can go down to zero, I had to make sure I was not dividing by zero when calculating the per person amount. An easy fix was to limit the seek bar's max to 14 and then always add 1 to its value when calculating the per person amount.
 
 ## License
 
